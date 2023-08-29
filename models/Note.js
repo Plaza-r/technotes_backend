@@ -13,8 +13,8 @@ const noteSchema = new mongoose.Schema(
         required: true
     },
     text: {
-        type: String,
-        default: "Employee"
+        type: [String],
+        default: ["Employee"]
     },
     completed: {
         type: Boolean,
