@@ -31,6 +31,7 @@ app.use('/', require('./routes/root'))  //exp of middleware
 
 app.use('/users', require('./routes/userRoutes'))
 
+
 app.all('*')
 
 app.all('*', (req, res) => {

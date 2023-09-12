@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const Note = require('../models/Note')
-const asyncHandler = require('express-async-handler')
-const brcrypt = require('bcrypt')
+const asyncHandler = require('express-async-handler') // allows not to use so much try/catch
+const brcrypt = require('bcrypt') // hashes password
 
 //@desc Get all users
 //@route Get /users 
@@ -96,8 +96,8 @@ const deleteUser = asyncHandler (async (req, res) => {
         return res.status(400).json({message: 'User ID Required'})
     }
 
-    const notes = await Note.findOne({user: id}).lean().exec()
-    if (notes?.length) {
+    const note = await Note.findOne({user: id}).lean().exec()
+    if (note) {
         return res.status(400).json({ message: 'User has assgined notes'})
     }
     const user = await User.findById(id).exec()
